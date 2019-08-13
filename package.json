@@ -1,0 +1,18 @@
+{
+  "name": "juans-recipes",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "grommet": "^2.7.5",
+    "netlify-cms": "^2.9.7",
+    "next": "^9.0.3",
+    "polished": "^3.4.1",
+    "raw-loader": "^3.1.0",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "styled-components": "^4.3.2"
+  }
+}
