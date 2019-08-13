@@ -3,7 +3,7 @@ module.exports = {
     // add modules
     config.module.rules.push({
       test: /\.md$/,
-      use: 'raw-loader'
+      use: 'frontmatter-markdown-loader'
     });
 
     // Fixes npm packages that depend on `fs` module
