@@ -4,6 +4,33 @@ ingredients:
   - amount: 0.5
     ingredient: 'butter, softened'
     unit: cup
+  - amount: 1
+    ingredient: brown sugar
+    unit: cup
+  - amount: 1
+    ingredient: large egg
+    unit: '-'
+  - amount: 2
+    ingredient: vanilla extract
+    unit: tsp
+  - amount: 0.5
+    ingredient: peanut butter
+    unit: cup
+  - amount: 1.25
+    ingredient: all purpose flour
+    unit: cup
+  - amount: 0.5
+    ingredient: baking soda
+    unit: tsp
+  - amount: 0.5
+    ingredient: salt
+    unit: tsp
+  - amount: 1
+    ingredient: choc chips
+    unit: cup
+  - amount: 1
+    ingredient: chopped nuts
+    unit: cup
 method: >
   1. Pre-heat the oven to 375 degrees F.
 
