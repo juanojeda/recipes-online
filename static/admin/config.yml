@@ -2,3 +2,21 @@ backend:
   name: git-gateway
   branch: master
 media_folder: static/images
+collections:
+  name: 'recipes'
+  label: 'Recipes'
+  folder: 'recipes'
+  create: true
+  fields:
+    - label: 'Title'
+      name: 'title'
+      widget: 'string'
+    - label: 'Ingredients'
+      name: 'ingredients'
+      widget: 'list'
+      fields:
+      - { label: 'Amount/qty', name: 'amount', widget: 'number' }
+      - { label: 'Unit', name: 'unit', widget: 'string' } }
+    - label: 'Method'
+      name: 'method'
+      widget: 'markdown'
