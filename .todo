@@ -1,0 +1,5 @@
+- [x] create a server function to connect to firebase
+- [x] list recipes in firebase
+- [ ] create a recipe in firebase
+- [ ] edit a recipe in firebase
+- [ ] display a list of recipes as fetched from firebase

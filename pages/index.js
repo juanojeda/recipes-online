@@ -1,12 +1,12 @@
-import React from 'react';
-import Link from 'next/link';
-import Head from '../components/head';
-import { Grommet } from 'grommet';
+import React from "react";
+import Link from "next/link";
 
-const Home = () => (
-  <Grommet plain>
-    <Head title="Home" />
-  </Grommet>
+export default () => (
+  <ul>
+    <li>
+      <Link href="/RecipeEditor" as="/editor">
+        <a>editor</a>
+      </Link>
+    </li>
+  </ul>
 );
-
-export default Home;

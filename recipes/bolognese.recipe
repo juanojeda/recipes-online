@@ -1,0 +1,36 @@
+atoms:
+-----
+- onion
+- carrot
+- celery
+- garlic clove
+- beef mince
+- pork mince
+- veal mince
+- tomato paste
+- red wine
+- milk
+- beef bones
+- bay leaf
+- peppercorn
+- leek
+- oregano
+- basil
+
+molecules:
+---------
+- mirepoix (onion, carrot, celery)
+- bouquet garnis (bay leaf, peppercorn, leek, oregano, basil)
+- beef stock (mirepoix, beef bones, bouquet garnis)
+
+
+
+- fry onions, 3 mins
+- add [carrot + celery], fry 6 mins
+- add garlic, fry 3 mins
+- add [beef, pork, veal], fry 8 mins
+- add tomato paste, fry 3 mins
+- add wine, simmer 3 mins
+- add milk, simmer 3 mins
+- add [beef stock, bouquet garnis], simmer 15 mins
+- season, simmer 20 mins
