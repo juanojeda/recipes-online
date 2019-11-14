@@ -19,6 +19,7 @@ An online repository for storing and riffing on recipes
 - [ ] ingredient varieties
 - [ ] method segments
 - [ ] how to add equipment?
+- [ ] store image/s for recipes?
 
 
 ## UI Tings
