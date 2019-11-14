@@ -11,11 +11,20 @@ An online repository for storing and riffing on recipes
 - [x] create a recipe in firebase
 - [ ] edit a recipe in firebase
 - [ ] display a list of recipes as fetched from firebase
+- [ ] store ingredients in a separate table, autosuggest
+- [ ] store units in a separate table, autosuggest
+- [ ] store preparations in a separate table, autosuggest
+- [ ] recipe can be added as an ingredient, linked from ingredient list
+- [ ] ingredient segments
+- [ ] ingredient varieties
+- [ ] method segments
+- [ ] how to add equipment?
 
 
 ## UI Tings
 - [ ] styling
 - [ ] add return/enter key adding hook (for methods and ingredients)
+- [ ] reorder ingredients and method
 
 ## Deployment
 
