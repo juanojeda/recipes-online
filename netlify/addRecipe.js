@@ -6,6 +6,7 @@ import {
   FIREBASE_URL
 } from "./firebase";
 import firebaseFieldsToDoc from "../utils/firebaseFieldsToDoc";
+import get from "lodash/get";
 
 const handler = async function handler(event) {
   const { recipe } = JSON.parse(event.body);
@@ -17,7 +18,13 @@ const handler = async function handler(event) {
       .add(recipe)
       .then(resp => {
         response = resp;
-        console.log(`Created recipe ${recipe.title} \n${JSON.stringify(resp)}`);
+        console.log(
+          `Created recipe ${recipe.title}. \n recipe ID: ${get(
+            resp,
+            "_path.segments",
+            []
+          ).join("/") || "Not found"}`
+        );
       });
 
     return {
@@ -28,7 +35,7 @@ const handler = async function handler(event) {
       headers: { "Content-Type": "application/json" }
     };
   } catch (e) {
-    console.error(`error updating guest ${recipe.dockey}:`, e);
+    console.error(`error updating recipe ${recipe.dockey}:`, e);
     return {
       statusCode: 500,
       body: e
