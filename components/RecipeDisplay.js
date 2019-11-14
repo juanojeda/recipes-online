@@ -13,10 +13,6 @@ const RecipeDisplay = ({ title, ingredients, methods }) => {
       <h1>{title}</h1>
       <IngredientsList ingredients={ingredients} />
       <MethodList method={methods} />
-
-      <pre>
-        <code>{JSON.stringify({ title, ingredients, methods }, null, 2)}</code>
-      </pre>
     </div>
   );
 };
