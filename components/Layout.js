@@ -15,7 +15,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   html {
-    font-size: 10px;
+    font-size: 16px;
     font-family: ${fontSets.sans["300"]}, sans-serif;
     margin: 0;
     padding: 0;
@@ -25,7 +25,7 @@ const GlobalStyles = createGlobalStyle`
   body {
     background: ${colours.body.bg};
     color: ${colours.body.text};
-    font-size: 1.6rem;
+    font-size: 1rem;
     margin: 0;
     padding: 0;
     min-height: 100vh;

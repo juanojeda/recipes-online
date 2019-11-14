@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 
 import { Input } from "./Input";
+import Button from "./Button";
 
 const AddIngredient = ({ setValueFn }) => {
   const [amount, setAmount] = useState("");
@@ -33,7 +34,9 @@ const AddIngredient = ({ setValueFn }) => {
         placeholder="preparations"
       />
 
-      <button onClick={addIngredient}>Add Item</button>
+      <Button variant="secondary" fn={addIngredient}>
+        Add Item
+      </Button>
     </div>
   );
 };

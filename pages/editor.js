@@ -6,6 +6,7 @@ import RecipeDisplay from "../components/RecipeDisplay";
 import AddMethodStep from "../components/AddMethodStep";
 import AddIngredient from "../components/AddIngredient";
 import { Input } from "../components/Input";
+import Button from "../components/Button";
 
 const Editor = props => {
   const [title, setTitle] = useState("");
@@ -60,7 +61,9 @@ const Editor = props => {
         ingredients={ingredients}
         methods={methods}
       />
-      <button onClick={sendRecipeToDB}>Send it</button>
+      <Button variant="primary" fn={sendRecipeToDB}>
+        Save
+      </Button>
     </>
   );
 };

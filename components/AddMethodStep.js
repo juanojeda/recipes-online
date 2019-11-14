@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 
 import { Input } from "./Input";
+import Button from "./Button";
 
 const AddMethodStep = ({ setValueFn }) => {
   const [step, setStep] = useState("");
@@ -20,7 +21,9 @@ const AddMethodStep = ({ setValueFn }) => {
         setter={setStep}
         placeholder="method step"
       />
-      <button onClick={addStep}>Add Step</button>
+      <Button variant="secondary" fn={addStep}>
+        Add Step
+      </Button>
     </div>
   );
 };

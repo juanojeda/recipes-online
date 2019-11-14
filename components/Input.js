@@ -1,8 +1,30 @@
 import React from "react";
 import PropTypes from "prop-types";
+import styled from "styled-components";
+import colours from "../utils/style-utils/colours";
 
-const InputEl = props => <input {...props} />;
-const TextArea = props => <textarea {...props} />;
+const StyledInput = styled.input`
+  background: ${colours.inputs.bg};
+  border: none;
+  margin-right: 0.25rem;
+  font-size: 1rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  margin-left: 0.25rem;
+  font-family: inherit;
+`;
+
+const StyledTextArea = styled(StyledInput).attrs({
+  as: "textarea"
+})`
+  line-height: 1.5;
+  vertical-align: bottom;
+`;
+
+const InputEl = props => <StyledInput {...props} />;
+const TextArea = props => <StyledTextArea {...props} />;
 
 export const Input = ({ type = "text", value, setter, placeholder }) => {
   const Component = type === "textarea" ? TextArea : InputEl;
