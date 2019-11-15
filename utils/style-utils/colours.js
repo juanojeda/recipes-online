@@ -5,7 +5,7 @@ const milk = "#f4f3f2";
 
 const cacao = "#42393c";
 
-const shiraz = "#75334c";
+const shiraz = "#891b45";
 const shiraz_dark = "#591b33";
 
 const oregano = "#46968b";
@@ -19,7 +19,9 @@ const turmeric = "#f99020";
 const colours = {
   links: oregano,
   inputs: {
-    bg: milk
+    bg: transparentize(0.75, milk),
+    bgFocus: transparentize(0.25, milk),
+    borderBottom: `1px solid ${transparentize(0.75, cacao)}`
   },
   buttons: {
     primary: {

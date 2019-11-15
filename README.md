@@ -24,6 +24,7 @@ An online repository for storing and riffing on recipes
 
 ## UI Tings
 - [ ] styling
+- [ ] visual feedback that the recipe has been added
 - [ ] add return/enter key adding hook (for methods and ingredients)
 - [ ] reorder ingredients and method
 

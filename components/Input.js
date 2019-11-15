@@ -6,14 +6,21 @@ import colours from "../utils/style-utils/colours";
 const StyledInput = styled.input`
   background: ${colours.inputs.bg};
   border: none;
-  margin-right: 0.25rem;
+  border-bottom: ${colours.inputs.borderBottom};
+  font-family: inherit;
   font-size: 1rem;
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
   padding-bottom: 0.5rem;
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0.5rem;
-  margin-left: 0.25rem;
-  font-family: inherit;
+  transition: 200ms ease background;
+  width: 100%;
+  &:focus,
+  &:active {
+    background: ${colours.inputs.bgFocus};
+  }
 `;
 
 const StyledTextArea = styled(StyledInput).attrs({

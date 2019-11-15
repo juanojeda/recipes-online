@@ -19,10 +19,10 @@ const AddMethodStep = ({ setValueFn }) => {
         type="textarea"
         value={step}
         setter={setStep}
-        placeholder="method step"
+        placeholder="Eg. Whisk the eggs together, and season to taste."
       />
       <Button variant="secondary" fn={addStep}>
-        Add Step
+        Add step
       </Button>
     </div>
   );

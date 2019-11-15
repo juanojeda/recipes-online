@@ -1,8 +1,14 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+import styled from "styled-components";
 
 import { Input } from "./Input";
 import Button from "./Button";
+
+const FlexContainer = styled.div`
+  display: flex;
+`;
+const FlexItem = styled.div``;
 
 const AddIngredient = ({ setValueFn }) => {
   const [amount, setAmount] = useState("");
@@ -25,17 +31,27 @@ const AddIngredient = ({ setValueFn }) => {
 
   return (
     <div>
-      <Input value={amount} setter={setAmount} placeholder="amount" />
-      <Input value={unit} setter={setUnit} placeholder="unit" />
-      <Input value={item} setter={setItem} placeholder="item" />
-      <Input
-        value={preparations}
-        setter={setPreparations}
-        placeholder="preparations"
-      />
+      <FlexContainer>
+        <FlexItem>
+          <Input value={amount} setter={setAmount} placeholder="qty" />
+        </FlexItem>
+        <FlexItem>
+          <Input value={unit} setter={setUnit} placeholder="unit" />
+        </FlexItem>
+        <FlexItem>
+          <Input value={item} setter={setItem} placeholder="item" />
+        </FlexItem>
+        <FlexItem>
+          <Input
+            value={preparations}
+            setter={setPreparations}
+            placeholder="prep"
+          />
+        </FlexItem>
+      </FlexContainer>
 
-      <Button variant="secondary" fn={addIngredient}>
-        Add Item
+      <Button variant="secondary" fn={addIngredient} block>
+        Add item
       </Button>
     </div>
   );

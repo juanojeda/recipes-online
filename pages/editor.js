@@ -13,6 +13,12 @@ const Editor = props => {
   const [ingredients, setIngredients] = useState([]);
   const [methods, setMethods] = useState([]);
 
+  const clearRecipe = () => {
+    setTitle("");
+    setIngredients([]);
+    setMethods([]);
+  };
+
   const addIngredientFn = ingredient =>
     setIngredients([
       ...ingredients,
@@ -41,6 +47,9 @@ const Editor = props => {
         body: JSON.stringify(body)
       });
       const { title, ingredients, methods } = await data.json();
+
+      clearRecipe();
+
       console.log("successfully added");
       console.log({ title, ingredients, methods });
     } catch (e) {
@@ -50,11 +59,11 @@ const Editor = props => {
 
   return (
     <>
-      <h2>Name your recipe</h2>
-      <Input setter={setTitle} placeholder={title} value={title} />
-      <h2>Add an ingredient</h2>
+      <h3>Name your recipe</h3>
+      <Input setter={setTitle} placeholder="Eg. Rabbit stew" value={title} />
+      <h3>Add an ingredient</h3>
       <AddIngredient setValueFn={addIngredientFn} />
-      <h2>Add a method</h2>
+      <h3>Add a step</h3>
       <AddMethodStep setValueFn={addMethodStepFn} />
       <RecipeDisplay
         title={title}
