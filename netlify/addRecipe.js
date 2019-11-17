@@ -1,11 +1,5 @@
 import fetch from "isomorphic-unfetch";
-import {
-  default as firestore,
-  getAuthToken,
-  PROJECT_ID,
-  FIREBASE_URL
-} from "./firebase";
-import firebaseFieldsToDoc from "../utils/firebaseFieldsToDoc";
+import { default as firestore } from "./firebase";
 import get from "lodash/get";
 
 const handler = async function handler(event) {

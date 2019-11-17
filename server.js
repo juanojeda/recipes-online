@@ -23,7 +23,7 @@ const { join } = require("path");
 const { createProxyServer } = require("http-proxy");
 const routes = require("./routes");
 
-const handle = routes.getRequestHandler(app);
+const handler = routes.getRequestHandler(app);
 app.prepare().then(() => {
   const rootStaticFiles = [
     /^\/\w*icon.*\.(png|ico)/,
@@ -53,7 +53,7 @@ app.prepare().then(() => {
       const [_, reqPath] = req.url.split("/api/");
       proxy.web(req, res, { target: `http://localhost:9000/${reqPath}` });
     } else {
-      handle(req, res, parsedUrl);
+      handler(req, res, parsedUrl);
     }
   }).listen(port, err => {
     if (err) throw err;

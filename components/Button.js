@@ -29,7 +29,7 @@ const Button = ({ variant, children, fn }) => {
 };
 
 Button.propTypes = {
-  variant: PropTypes.oneOf("primary", "secondary"),
+  variant: PropTypes.oneOf(["primary", "secondary"]),
   children: PropTypes.node,
   fn: PropTypes.func
 };

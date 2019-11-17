@@ -1,40 +1,48 @@
 import fetch from "isomorphic-unfetch";
-import { getAuthToken, PROJECT_ID, FIREBASE_URL } from "./firebase";
+import get from "lodash/get";
+import { default as firestore } from "./firebase";
 import firebaseFieldsToDoc from "../utils/firebaseFieldsToDoc";
 
-const handler = async function handler(_) {
+const convertToRealDate = secs => {
+  let date = new Date(0);
+  date.setUTCSeconds(secs);
+  return date.toISOString();
+};
+
+const handler = async function handler(req, res) {
   try {
-    const authToken = await getAuthToken();
+    const dbSnapshot = await firestore()
+      .collection("recipes")
+      .get();
 
-    const fieldsRequired = ["dockey", "title"];
-    const fieldMaskQuery = fieldsRequired.reduce(
-      (acc, curr, i) =>
-        `${acc}mask.fieldPaths=${curr}${
-          i < fieldsRequired.length - 1 ? "&" : ""
-        }`,
-      ""
-    );
+    let docPromises = [];
 
-    const recipesDBRes = await fetch(
-      `${FIREBASE_URL}/${PROJECT_ID}/databases/(default)/documents/recipes?${fieldMaskQuery}&pageSize=150`,
-      {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${authToken}`
+    dbSnapshot.forEach(doc => {
+      const docPromise = new Promise(async (res, rej) => {
+        try {
+          const documentSnapshot = doc.data();
+
+          const response = {
+            id: doc.id,
+            fields: documentSnapshot,
+            created: doc.createTime,
+            updated: doc.updateTime
+          };
+
+          res(response);
+        } catch (e) {
+          console.log(e);
+          rej(e);
         }
-      }
-    );
-    const recipesDB = await recipesDBRes.json();
+      });
+      docPromises.push(docPromise);
+    });
 
-    const recipeDocs = recipesDB.documents;
-
-    const recipes = recipeDocs.map(firebaseFieldsToDoc);
-
-    console.log(`returning ${recipes.length} entries`);
+    const docs = await Promise.all(docPromises);
 
     return {
       statusCode: 200,
-      body: JSON.stringify(recipes),
+      body: JSON.stringify(docs),
       headers: { "Content-Type": "application/json" }
     };
   } catch (err) {
