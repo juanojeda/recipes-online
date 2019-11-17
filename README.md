@@ -7,8 +7,9 @@ An online repository for storing and riffing on recipes
 ## TODO:
 
 - [x] create a server function to connect to firebase
-- [x] list recipes in firebase
+- [ ] list recipes in firebase
 - [x] create a recipe in firebase
+- [ ] Show single recipe detail
 - [ ] edit a recipe in firebase
 - [ ] display a list of recipes as fetched from firebase
 - [ ] store ingredients in a separate table, autosuggest
@@ -18,13 +19,18 @@ An online repository for storing and riffing on recipes
 - [ ] ingredient segments
 - [ ] ingredient varieties
 - [ ] method segments
+
+- [ ] improve ingredient entry - capture all in one field, but use spaces to separate bits?
+- [ ] Make it multi-user
+- [ ] Add authentication
 - [ ] how to add equipment?
 - [ ] store image/s for recipes?
 
 
 ## UI Tings
 - [ ] styling
-- [ ] visual feedback that the recipe has been added
+- [ ] better visual feedback that the recipe has been added
+- [ ] loading states
 - [ ] add return/enter key adding hook (for methods and ingredients)
 - [ ] reorder ingredients and method
 
