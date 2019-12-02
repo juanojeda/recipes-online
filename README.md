@@ -7,11 +7,12 @@ An online repository for storing and riffing on recipes
 ## TODO:
 
 - [x] create a server function to connect to firebase
-- [ ] list recipes in firebase
+- [ ] style recipe list
 - [x] create a recipe in firebase
-- [ ] Show single recipe detail
+- [x] Show single recipe detail
+- [ ] style recipe detail
 - [ ] edit a recipe in firebase
-- [ ] display a list of recipes as fetched from firebase
+- [x] display a list of recipes as fetched from firebase
 - [ ] store ingredients in a separate table, autosuggest
 - [ ] store units in a separate table, autosuggest
 - [ ] store preparations in a separate table, autosuggest
