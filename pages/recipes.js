@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import { getAPIEndpoint } from "../utils/api";
-import { Link } from "../routes";
+import Link from "next/link";
 
 const fetchRecipes = async setter => {
   const data = await fetch(`${getAPIEndpoint()}/getRecipes`);
@@ -27,7 +27,7 @@ export default () => {
     <div>
       {recipes.map(({ id, title, slug }) => (
         <div key={id}>
-          <Link route={`recipe/${slug}`}>
+          <Link href="/recipe" as={`recipe/${slug}`}>
             <a>{title}</a>
           </Link>
         </div>
