@@ -1,7 +1,4 @@
-import fetch from "isomorphic-unfetch";
-import get from "lodash/get";
 import { default as firestore } from "./firebase";
-import firebaseFieldsToDoc from "../utils/firebaseFieldsToDoc";
 
 const convertToRealDate = secs => {
   let date = new Date(0);
@@ -9,40 +6,89 @@ const convertToRealDate = secs => {
   return date.toISOString();
 };
 
-const handler = async function handler(req, res) {
-  try {
-    const dbSnapshot = await firestore()
-      .collection("recipes")
-      .get();
+const buildListResponse = async () => {
+  const dbSnapshot = await firestore()
+    .collection("recipes")
+    .get();
 
-    let docPromises = [];
+  let docPromises = [];
 
-    dbSnapshot.forEach(doc => {
-      const docPromise = new Promise(async (res, rej) => {
-        try {
-          const documentSnapshot = doc.data();
+  dbSnapshot.forEach(doc => {
+    const docPromise = new Promise(async (res, rej) => {
+      try {
+        const { slug, title } = doc.data();
+        const response = {
+          id: doc.id,
+          slug,
+          title
+        };
 
-          const response = {
-            id: doc.id,
-            fields: documentSnapshot,
-            created: doc.createTime,
-            updated: doc.updateTime
-          };
-
-          res(response);
-        } catch (e) {
-          console.log(e);
-          rej(e);
-        }
-      });
-      docPromises.push(docPromise);
+        res(response);
+      } catch (e) {
+        console.log(e);
+        rej(e);
+      }
     });
+    docPromises.push(docPromise);
+  });
 
-    const docs = await Promise.all(docPromises);
+  const docs = await Promise.all(docPromises);
 
+  return docs;
+};
+
+const buildDetailResponse = async slug => {
+  const dbSnapshot = await firestore()
+    .collection("recipes")
+    .where("slug", "==", slug)
+    .get();
+
+  let docPromises = [];
+
+  dbSnapshot.forEach(doc => {
+    const docPromise = new Promise(async (res, rej) => {
+      try {
+        const { title, slug, ...fields } = doc.data();
+        const response = {
+          id: doc.id,
+          title,
+          fields
+        };
+
+        res(response);
+      } catch (e) {
+        console.log(e);
+        rej(e);
+      }
+    });
+    docPromises.push(docPromise);
+  });
+
+  const docs = await Promise.all(docPromises);
+
+  return docs;
+};
+
+const handler = async function handler(event, context) {
+  const { slug } = event.queryStringParameters || {};
+  let response;
+  try {
+    if (slug) {
+      const data = await buildDetailResponse(slug);
+      if (data.length) {
+        response = data[0];
+      } else {
+        response = {
+          error: true,
+          errorMessage: "No recipe found with that slug"
+        };
+      }
+    } else {
+      response = await buildListResponse();
+    }
     return {
       statusCode: 200,
-      body: JSON.stringify(docs),
+      body: JSON.stringify(response),
       headers: { "Content-Type": "application/json" }
     };
   } catch (err) {

@@ -7,4 +7,5 @@ const routes = (module.exports = require("next-routes")());
 
 routes.add({ page: "/index", pattern: "/" });
 routes.add({ page: "/editor", pattern: "/add-recipe" });
-routes.add({ page: "/recipeList", pattern: "/recipes" });
+routes.add({ page: "/recipes", pattern: "/recipes" });
+routes.add({ page: "/recipe", pattern: "/recipe/:slug" });
