@@ -1,3 +1,8 @@
 [build]
   functions = "./functions"
   command = "sed -i s/API_KEY_PLACEHOLDER/$API_KEY/g netlify.toml && yarn netlify:build && yarn build:prod"
+
+[[redirects]]
+  from = "/recipe/*"
+  to = "/recipe?:splat"
+  status = 301
