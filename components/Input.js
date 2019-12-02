@@ -40,7 +40,7 @@ export const Input = ({ type = "text", value, setter, placeholder }) => {
   return (
     <Component
       type={inputType}
-      onChange={e => setter(e.target.value)}
+      onChange={event => setter(event.target.value)}
       placeholder={placeholder}
       value={value}
     />

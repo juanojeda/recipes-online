@@ -7,7 +7,7 @@ const handler = async function handler(event) {
 
   try {
     let response;
-    await firestore
+    await firestore()
       .collection("recipes")
       .add(recipe)
       .then(resp => {
