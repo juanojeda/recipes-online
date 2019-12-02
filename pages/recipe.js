@@ -15,6 +15,18 @@ const fetchRecipe = async slug => {
   };
 };
 
+const getSlugFromWindow = window => {
+  let slug;
+  if (window.location.search) {
+    const searchParams = new URLSearchParams(window.location.search);
+    slug = searchParams.get("slug");
+  } else {
+    slug = window.location.pathname.split("/recipe/")[1];
+  }
+
+  return slug;
+};
+
 const Recipe = () => {
   const [recipe, setRecipe] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
@@ -24,8 +36,9 @@ const Recipe = () => {
     if (!window) {
       return;
     }
-    let pathSlug = window.location.pathname.split("/recipe/")[1];
-    setSlug(pathSlug);
+
+    let windowSlug = getSlugFromWindow(window);
+    setSlug(windowSlug);
   }, []);
 
   useEffect(() => {

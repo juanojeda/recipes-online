@@ -4,5 +4,5 @@
 
 [[redirects]]
   from = "/recipe/*"
-  to = "/recipe/:splat"
+  to = "/recipe/?slug=:splat"
   status = 200
