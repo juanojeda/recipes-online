@@ -15,9 +15,18 @@ const fetchRecipe = async slug => {
   };
 };
 
-const Recipe = ({ slug }) => {
+const Recipe = () => {
   const [recipe, setRecipe] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
+  const [slug, setSlug] = useState(null);
+
+  useEffect(() => {
+    if (!window) {
+      return;
+    }
+    let pathSlug = window.location.pathname.split("/recipe/")[1];
+    setSlug(pathSlug);
+  }, []);
 
   useEffect(() => {
     if (!slug) return;
@@ -65,7 +74,5 @@ const Recipe = ({ slug }) => {
     return "loading";
   }
 };
-
-Recipe.getInitialProps = async ({ query }) => query;
 
 export default Recipe;
