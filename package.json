@@ -4,7 +4,8 @@
   "scripts": {
     "dev": "concurrently \"yarn netlify:serve\" \"node server.js\"",
     "build": "next build",
-    "build:prod": "NODE_ENV=production next build && next export",
+    "copyRedirect": "cp _redirects ./out/_redirects",
+    "build:prod": "NODE_ENV=production next build && next export && copyRedirect",
     "start": "NODE_ENV=production node server.js",
     "netlify:build": "netlify-lambda build --config ./netlify/config.js ./netlify",
     "netlify:serve": "netlify-lambda serve --config ./netlify/config.js ./netlify"
