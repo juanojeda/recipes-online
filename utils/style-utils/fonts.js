@@ -12,6 +12,7 @@ export const fontSets = {
     // '300': `${fontNames.serif}-Light`,
     "400": `${fontNames.serif}-Regular`,
     // '700': `${fontNames.serif}-Bold`,
+    "900": `${fontNames.serif}-Black`,
     "900": `${fontNames.serif}-Black`
   },
   sans: {

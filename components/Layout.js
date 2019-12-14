@@ -1,11 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
-
 import { createGlobalStyle, ThemeProvider } from "styled-components";
 
 import colours from "../utils/style-utils/colours";
 import { getFonts, fontSets } from "../utils/style-utils/fonts";
 import { gridBreakpoints } from "../utils/style-utils/breakpoints";
+
+import Header from "./Header";
 
 const GlobalStyles = createGlobalStyle`
   ${getFonts()};
@@ -46,6 +47,7 @@ const Layout = ({ children }, ...props) => (
   >
     <>
       <GlobalStyles />
+      <Header />
       {children}
     </>
   </ThemeProvider>

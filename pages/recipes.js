@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import { getAPIEndpoint } from "../utils/api";
-import Link from "next/link";
+import RecipeList from "../components/RecipeList";
 
 const fetchRecipes = async setter => {
   const data = await fetch(`${getAPIEndpoint()}/getRecipes`);
@@ -23,15 +23,5 @@ export default () => {
     fetchAndSetRecipes();
   }, []);
 
-  return (
-    <div>
-      {recipes.map(({ id, title, slug }) => (
-        <div key={id}>
-          <Link href="/recipe" as={`recipe/${slug}`}>
-            <a>{title}</a>
-          </Link>
-        </div>
-      ))}
-    </div>
-  );
+  return <RecipeList recipes={recipes} />;
 };
