@@ -1,6 +1,6 @@
 ---
 created: 2020-04-15T00:32:11+10:00
-modified: 2020-04-15T00:33:14+10:00
+modified: 2020-04-15T00:34:28+10:00
 title: Thai Red Curry Paste
 ---
 
@@ -14,7 +14,8 @@ title: Thai Red Curry Paste
 - 2tsp coriander seeds
 - 1 tsp black peppercorns
 
-### herbs
+
+### Herbs 
 
 - 15-20 dry red chillis, halved and seeds removed*, soaked to soften
 - 2 fresh long red chillis, chopped into 1cm pieces
@@ -27,7 +28,8 @@ title: Thai Red Curry Paste
 - 1/4 cup garlic, roughly chopped
 - 2 tbsp red onion
 
-### other
+
+### Other 
 
 - 1 tbsp shrimp paste
 - 1/2 tsp salt
