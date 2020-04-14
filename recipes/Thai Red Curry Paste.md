@@ -1,7 +1,5 @@
 ---
-created: 2020-04-15T00:32:11+10:00
-modified: 2020-04-15T00:34:28+10:00
-title: Thai Red Curry Paste
+modified: 2020-04-15T00:36:42+10:00
 ---
 
 # Red Curry Paste
