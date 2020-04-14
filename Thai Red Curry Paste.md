@@ -1,6 +1,6 @@
 ---
 created: 2020-04-15T00:32:11+10:00
-modified: 2020-04-15T00:32:26+10:00
+modified: 2020-04-15T00:33:14+10:00
 title: Thai Red Curry Paste
 ---
 
@@ -9,11 +9,13 @@ title: Thai Red Curry Paste
 ## Ingredients
 
 ### dry spices
+
 - 2tsp cumin seeds
 - 2tsp coriander seeds
 - 1 tsp black peppercorns
 
 ### herbs
+
 - 15-20 dry red chillis, halved and seeds removed*, soaked to soften
 - 2 fresh long red chillis, chopped into 1cm pieces
 - 3 birds eye chillis, chopped into 1cm pieces
@@ -26,6 +28,7 @@ title: Thai Red Curry Paste
 - 2 tbsp red onion
 
 ### other
+
 - 1 tbsp shrimp paste
 - 1/2 tsp salt
 - 1-2 tbsp reserved chili water
@@ -33,15 +36,18 @@ title: Thai Red Curry Paste
 - 1/2 tbsp palm sugar
 
 ## Method
+
 1. Lightly toast the dry spices, then grind to a powder in a mortar and pestle.
 2. Combine herbs, shrimp paste, salt, oil, and palm sugar in a food processor and blent until a fairly smooth paste is formed.
 3. Combine all ingredients in a bowl and mix well.
 
 ## Notes
+
 \* Keep seeds for a chili oil
 
 
 ## Based on
+
 - [Recipe Tin Eats](https://www.recipetineats.com/thai-red-curry-paste/)
 - [Eating Thai Food](https://www.eatingthaifood.com/thai-red-curry-paste-recipe/)
 - [Epicurious](https://www.epicurious.com/recipes/food/views/thai-red-curry-paste-109465)
