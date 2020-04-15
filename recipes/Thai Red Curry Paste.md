@@ -1,6 +1,6 @@
 ---
 created: 2020-04-13T11:30:10+10:00
-modified: 2020-04-15T00:40:18+10:00
+modified: 2020-04-15T18:39:33+10:00
 title: Thai Red Curry Paste
 ---
 
@@ -29,7 +29,7 @@ title: Thai Red Curry Paste
 - 2 tbsp red onion
 
 
-### Other 
+### Otherwise wer 
 
 - 1 tbsp shrimp paste
 - 1/2 tsp salt
