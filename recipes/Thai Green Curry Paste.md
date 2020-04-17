@@ -6,6 +6,8 @@ title: Thai Green Curry Paste
 
 # Thai Green Curry Paste
 
+Makes enough for about 16 serves of curry.
+
 ## Ingredients
 
 ### dry spices
@@ -31,9 +33,9 @@ title: Thai Green Curry Paste
 - 3 lemon leaves
 
 ### other
-- 1 1/2 shrimp paste
-- 1/2 tbsp palm sugar
-- 1 tsp salt
+- 2 tbsp shrimp paste
+- 1 1/2 tbsp palm sugar, packed
+- 2 tsp salt
 - 1/2 tbsp oil
 
 
