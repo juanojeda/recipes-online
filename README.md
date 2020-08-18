@@ -6,30 +6,43 @@ An online repository for storing and riffing on recipes
 
 ## TODO:
 
-- [x] create a server function to connect to firebase
-- [ ] style recipe list
+#### Recipe create/edit
 - [x] create a recipe in firebase
-- [x] Show single recipe detail
 - [ ] style recipe detail
-- [ ] edit a recipe in firebase
-- [x] display a list of recipes as fetched from firebase
+- [ ] edit an existing recipe
+- [ ] store image/s for recipes?
+
+#### Ingredients
 - [ ] store ingredients in a separate table, autosuggest
-- [ ] store units in a separate table, autosuggest
-- [ ] store preparations in a separate table, autosuggest
 - [ ] recipe can be added as an ingredient, linked from ingredient list
-- [ ] ingredient segments
 - [ ] ingredient varieties
+- [ ] ingredient segments
+- [ ] improve ingredient entry - capture all in one field, but use spaces to separate bits?
+
+#### Methods and units
+- [ ] store units in a separate table, autosuggest
+- [ ] store method in a separate table, autosuggest
 - [ ] method segments
 
-- [ ] improve ingredient entry - capture all in one field, but use spaces to separate bits?
+
+#### Library references
+- [ ] Add source field to the recipe (Book title / book author / book page / url)
+- [ ] Add way to reference an existing book to a recipe
+- [ ] Add way to create a new book
+- [ ] List of books
+- [ ] List of recipes in a book
+
+#### Multi-user
 - [ ] Make it multi-user
 - [ ] Add authentication
+
+
+#### Misc
 - [ ] how to add equipment?
-- [ ] store image/s for recipes?
 
 
 ## UI Tings
-- [ ] styling
+- [ ] style recipe list
 - [ ] better visual feedback that the recipe has been added
 - [ ] loading states
 - [ ] add return/enter key adding hook (for methods and ingredients)
