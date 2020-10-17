@@ -1,12 +1,22 @@
 import React from "react";
 import IngredientShape from "../shapes/IngredientShape";
 
-const Ingredient = ({ amount, item, unit, preparations }) => {
+const Ingredient = ({
+  id,
+  amount,
+  item,
+  unit,
+  preparations,
+  removeIngredient,
+}) => {
   return (
     <li>
-      {amount}
-      {item && ` ${unit}`} {item}
-      {preparations && `, ${preparations}`}
+      <div>
+        {amount}
+        {item && ` ${unit}`} {item}
+        {preparations && `, ${preparations}`}
+      </div>
+      <button onClick={removeIngredient(id)}>remove</button>
     </li>
   );
 };

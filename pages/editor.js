@@ -8,7 +8,13 @@ import AddIngredient from "../components/AddIngredient";
 import { Input } from "../components/Input";
 import Button from "../components/Button";
 
-const Editor = props => {
+const filterItem = (itemId, itemList) =>
+  itemList.filter(({ id }) => id !== itemId);
+
+const removeFilteredItem = (itemId, setter, list) => (id) =>
+  setter(filterItem(itemId, list));
+
+const Editor = (props) => {
   const [title, setTitle] = useState("");
   const [ingredients, setIngredients] = useState([]);
   const [methods, setMethods] = useState([]);
@@ -19,20 +25,20 @@ const Editor = props => {
     setMethods([]);
   };
 
-  const addIngredientFn = ingredient =>
+  const addIngredientFn = (ingredient) =>
     setIngredients([
       ...ingredients,
       {
         id: `ing__${ingredients.length}`,
         order: ingredients.length,
-        ...ingredient
-      }
+        ...ingredient,
+      },
     ]);
 
-  const addMethodStepFn = step =>
+  const addMethodStepFn = (step) =>
     setMethods([
       ...methods,
-      { id: `met__${methods.length}`, order: methods.length, step }
+      { id: `met__${methods.length}`, order: methods.length, step },
     ]);
 
   const sendRecipeToDB = async () => {
@@ -44,7 +50,7 @@ const Editor = props => {
         method: "POST",
         mode: "cors",
         credentials: "include",
-        body: JSON.stringify(body)
+        body: JSON.stringify(body),
       });
       const { title, ingredients, methods } = await data.json();
 
@@ -56,6 +62,10 @@ const Editor = props => {
       console.error(e);
     }
   };
+
+  const removeMethod = (id) => removeFilteredItem(id, setMethods, methods);
+  const removeIngredient = (id) =>
+    removeFilteredItem(id, setIngredients, ingredients);
 
   return (
     <>
@@ -69,6 +79,8 @@ const Editor = props => {
         title={title}
         ingredients={ingredients}
         methods={methods}
+        removeMethod={removeMethod}
+        removeIngredient={removeIngredient}
       />
       <Button variant="primary" fn={sendRecipeToDB}>
         Save

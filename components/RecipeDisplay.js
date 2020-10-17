@@ -7,12 +7,21 @@ import MethodShape from "../shapes/MethodShape";
 import IngredientsList from "./IngredientsList";
 import MethodList from "./MethodList";
 
-const RecipeDisplay = ({ title, ingredients, methods }) => {
+const RecipeDisplay = ({
+  title,
+  ingredients,
+  methods,
+  removeMethod,
+  removeIngredient,
+}) => {
   return (
     <div>
       <h1>{title}</h1>
-      <IngredientsList ingredients={ingredients} />
-      <MethodList method={methods} />
+      <IngredientsList
+        ingredients={ingredients}
+        removeIngredient={removeIngredient}
+      />
+      <MethodList method={methods} removeMethod={removeMethod} />
     </div>
   );
 };
@@ -20,7 +29,7 @@ const RecipeDisplay = ({ title, ingredients, methods }) => {
 RecipeDisplay.propTypes = {
   title: PropTypes.string,
   ingredients: PropTypes.arrayOf(PropTypes.shape(IngredientShape)),
-  methods: PropTypes.arrayOf(PropTypes.shape(MethodShape))
+  methods: PropTypes.arrayOf(PropTypes.shape(MethodShape)),
 };
 
 export default RecipeDisplay;
