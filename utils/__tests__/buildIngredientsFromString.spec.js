@@ -1,6 +1,6 @@
 import buildIngredientFromString from "../buildIngredientsFromString";
 
-describe("buildIngredientsFromString", () => {
+describe("buildIngredientFromString", () => {
   describe("GIVEN any string", () => {
     it("THEN it returns an object with the right shape", () => {
       const ingredientObject = buildIngredientFromString("any");
@@ -11,7 +11,7 @@ describe("buildIngredientsFromString", () => {
     });
   });
 
-  describe("GIVEN a typed out ingredient string", () => {
+  describe("GIVEN an ingredient string", () => {
     describe("WHEN the string starts with a numeric fragment", () => {
       const testEach = it.concurrent.each`
         ingredientString   | expectedAmount
