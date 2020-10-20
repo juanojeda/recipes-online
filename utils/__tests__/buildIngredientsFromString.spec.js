@@ -1,9 +1,9 @@
-import buildIngredientFromString from "../buildIngredientsFromString";
+import buildIngredientsFromString from "../buildIngredientsFromString";
 
-describe("buildIngredientFromString", () => {
+describe("buildIngredientsFromString", () => {
   describe("GIVEN any string", () => {
     it("THEN it returns an object with the right shape", () => {
-      const ingredientObject = buildIngredientFromString("any");
+      const ingredientObject = buildIngredientsFromString("any");
       expect(ingredientObject).toHaveProperty("amount");
       expect(ingredientObject).toHaveProperty("unit");
       expect(ingredientObject).toHaveProperty("item");
@@ -26,7 +26,7 @@ describe("buildIngredientFromString", () => {
       testEach(
         'GIVEN an ingredient "$ingredientString" THEN it returns amount $expectedAmount',
         async ({ ingredientString, expectedAmount }) => {
-          expect(buildIngredientFromString(ingredientString).amount).toEqual(
+          expect(buildIngredientsFromString(ingredientString).amount).toEqual(
             expectedAmount
           );
         }
@@ -44,7 +44,7 @@ describe("buildIngredientFromString", () => {
       testEach(
         "GIVEN an ingredient $ingredientString THEN it returns amount $expectedAmount",
         async ({ ingredientString, expectedAmount }) => {
-          expect(buildIngredientFromString(ingredientString).amount).toBe(
+          expect(buildIngredientsFromString(ingredientString).amount).toBe(
             expectedAmount
           );
         }
@@ -71,7 +71,7 @@ describe("buildIngredientFromString", () => {
       testEach(
         "GIVEN an ingredient $ingredientString, returns a unit of $expectedUnit",
         async ({ ingredientString, expectedUnit }) => {
-          expect(buildIngredientFromString(ingredientString).unit).toEqual(
+          expect(buildIngredientsFromString(ingredientString).unit).toEqual(
             expectedUnit
           );
         }
@@ -89,7 +89,7 @@ describe("buildIngredientFromString", () => {
       testEach(
         "GIVEN an ingredient $ingredientString, it returns a unit of $expectedUnit",
         async ({ ingredientString, expectedUnit }) => {
-          expect(buildIngredientFromString(ingredientString).unit).toEqual(
+          expect(buildIngredientsFromString(ingredientString).unit).toEqual(
             expectedUnit
           );
         }
