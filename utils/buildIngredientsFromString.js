@@ -12,21 +12,28 @@ const UNITS = [
   "pinch",
   "pinches",
 ];
+const RE_AMOUNT = /^[\d\.\–\- /]+/i;
 
 const extractAmount = (lineItem) => {
-  const matches = lineItem.match(/^[\d\.\–\- /]+/i);
+  const matches = lineItem.match(RE_AMOUNT);
   return matches ? matches[0].trim() : undefined;
 };
+
 const extractUnit = (lineItem) =>
-  lineItem.split(" ").find((segment) => UNITS.includes(segment));
+  lineItem
+    .replace(RE_AMOUNT, "")
+    .split(" ")
+    .find((segment) => UNITS.includes(segment));
+
 const extractPreparation = (lineItem) => {
   const segments = lineItem.split(", ");
 
   if (segments.length > 1) {
     return segments.slice(-1)[0];
   }
-  return "";
+  return undefined;
 };
+
 const extractItem = (lineItem) =>
   [lineItem]
     .map((lineItem) => lineItem.replace(extractAmount(lineItem), ""))

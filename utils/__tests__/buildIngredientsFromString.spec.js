@@ -26,10 +26,11 @@ describe("buildIngredientsFromString", () => {
 
     describe("WHEN the ingredient does NOT start with a numeric fragment", () => {
       const testEach = it.each`
-        ingredientString       | expectedAmount
-        ${"five carrots"}      | ${undefined}
-        ${"a pound of olives"} | ${undefined}
-        ${"salt and pepper"}   | ${undefined}
+        ingredientString           | expectedAmount
+        ${"five carrots"}          | ${undefined}
+        ${"a pound of olives"}     | ${undefined}
+        ${"salt and pepper"}       | ${undefined}
+        ${"salt and pepper 50/50"} | ${undefined}
       `;
       testEach(
         "GIVEN an ingredient $ingredientString THEN it returns amount $expectedAmount",
@@ -40,5 +41,55 @@ describe("buildIngredientsFromString", () => {
         }
       );
     });
+
+    // units
+    describe("WHEN the ingredient includes a supported unit", () => {
+      const testEach = it.each`
+        ingredientString        | expectedUnit
+        ${"1 cup carrots"}      | ${"cup"}
+        ${"cups carrots"}       | ${"cups"}
+        ${"1 tsp carrot"}       | ${"tsp"}
+        ${"1 tbsp carrots"}     | ${"tbsp"}
+        ${"1kg carrot"}         | ${"kg"}
+        ${"2g carrot"}          | ${"g"}
+        ${"500ml carrots"}      | ${"ml"}
+        ${"5 l carrots"}        | ${"l"}
+        ${"1 bunch of carrots"} | ${"bunch"}
+        ${"2 bunches carrot"}   | ${"bunches"}
+        ${"1/2 pinch carrot"}   | ${"pinch"}
+        ${"2 pinches carrot"}   | ${"pinches"}
+      `;
+
+      testEach(
+        "GIVEN an ingredient $ingredientString, returns a unit of $expectedUnit",
+        ({ ingredientString, expectedUnit }) => {
+          expect(buildIngredientFromString(ingredientString).unit).toEqual(
+            expectedUnit
+          );
+        }
+      );
+    });
+
+    describe("WHEN the ingredient does NOT include a supported unit", () => {
+      const testEach = it.each`
+        ingredientString           | expectedUnit
+        ${"a plethora of carrots"} | ${undefined}
+        ${"300lb carrot"}          | ${undefined}
+        ${"5 handfuls of carrot"}  | ${undefined}
+      `;
+
+      testEach(
+        "GIVEN an ingredient $ingredientString, it returns a unit of $expectedUnit",
+        ({ ingredientString, expectedUnit }) => {
+          expect(buildIngredientFromString(ingredientString).unit).toEqual(
+            expectedUnit
+          );
+        }
+      );
+    });
+
+    // item
+
+    // preparation
   });
 });
