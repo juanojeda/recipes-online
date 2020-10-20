@@ -4,7 +4,7 @@ import buildIngredientsFromString from "../buildIngredientsFromString";
 describe("buildIngredientsFromString", () => {
   describe("GIVEN a typed out ingredient string", () => {
     describe("WHEN the string starts with a numeric fragment", () => {
-      const testEach = it.each`
+      const testEach = test.concurrent.each`
         ingredientString   | expectedAmount
         ${"1 carrot"}      | ${"1"}
         ${"750 carrot"}    | ${"750"}
@@ -16,7 +16,7 @@ describe("buildIngredientsFromString", () => {
 
       testEach(
         'GIVEN an ingredient "$ingredientString" THEN it returns amount $expectedAmount',
-        ({ ingredientString, expectedAmount }) => {
+        async ({ ingredientString, expectedAmount }) => {
           expect(buildIngredientFromString(ingredientString).amount).toEqual(
             expectedAmount
           );
@@ -25,7 +25,7 @@ describe("buildIngredientsFromString", () => {
     });
 
     describe("WHEN the ingredient does NOT start with a numeric fragment", () => {
-      const testEach = it.each`
+      const testEach = test.concurrent.each`
         ingredientString           | expectedAmount
         ${"five carrots"}          | ${undefined}
         ${"a pound of olives"}     | ${undefined}
@@ -34,7 +34,7 @@ describe("buildIngredientsFromString", () => {
       `;
       testEach(
         "GIVEN an ingredient $ingredientString THEN it returns amount $expectedAmount",
-        ({ ingredientString, expectedAmount }) => {
+        async ({ ingredientString, expectedAmount }) => {
           expect(buildIngredientFromString(ingredientString).amount).toBe(
             expectedAmount
           );
@@ -44,7 +44,7 @@ describe("buildIngredientsFromString", () => {
 
     // units
     describe("WHEN the ingredient includes a supported unit", () => {
-      const testEach = it.each`
+      const testEach = test.concurrent.each`
         ingredientString        | expectedUnit
         ${"1 cup carrots"}      | ${"cup"}
         ${"cups carrots"}       | ${"cups"}
@@ -62,7 +62,7 @@ describe("buildIngredientsFromString", () => {
 
       testEach(
         "GIVEN an ingredient $ingredientString, returns a unit of $expectedUnit",
-        ({ ingredientString, expectedUnit }) => {
+        async ({ ingredientString, expectedUnit }) => {
           expect(buildIngredientFromString(ingredientString).unit).toEqual(
             expectedUnit
           );
@@ -71,7 +71,7 @@ describe("buildIngredientsFromString", () => {
     });
 
     describe("WHEN the ingredient does NOT include a supported unit", () => {
-      const testEach = it.each`
+      const testEach = test.concurrent.each`
         ingredientString           | expectedUnit
         ${"a plethora of carrots"} | ${undefined}
         ${"300lb carrot"}          | ${undefined}
@@ -80,7 +80,7 @@ describe("buildIngredientsFromString", () => {
 
       testEach(
         "GIVEN an ingredient $ingredientString, it returns a unit of $expectedUnit",
-        ({ ingredientString, expectedUnit }) => {
+        async ({ ingredientString, expectedUnit }) => {
           expect(buildIngredientFromString(ingredientString).unit).toEqual(
             expectedUnit
           );
