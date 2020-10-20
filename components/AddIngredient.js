@@ -21,7 +21,7 @@ const AddIngredient = ({ setValueFn }) => {
       amount,
       item,
       unit,
-      preparations
+      preparations,
     });
     setAmount("");
     setItem("");
@@ -58,7 +58,7 @@ const AddIngredient = ({ setValueFn }) => {
 };
 
 AddIngredient.propTypes = {
-  setValueFn: PropTypes.func
+  setValueFn: PropTypes.func,
 };
 
 export default AddIngredient;
