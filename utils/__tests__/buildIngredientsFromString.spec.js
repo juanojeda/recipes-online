@@ -1,7 +1,16 @@
 import buildIngredientFromString from "../buildIngredientsFromString";
-import buildIngredientsFromString from "../buildIngredientsFromString";
 
 describe("buildIngredientsFromString", () => {
+  describe("GIVEN any string", () => {
+    it("THEN it returns an object with the right shape", () => {
+      const ingredientObject = buildIngredientFromString("any");
+      expect(ingredientObject).toHaveProperty("amount");
+      expect(ingredientObject).toHaveProperty("unit");
+      expect(ingredientObject).toHaveProperty("item");
+      expect(ingredientObject).toHaveProperty("preparation");
+    });
+  });
+
   describe("GIVEN a typed out ingredient string", () => {
     describe("WHEN the string starts with a numeric fragment", () => {
       const testEach = test.concurrent.each`
