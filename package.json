@@ -27,7 +27,7 @@
     "polished": "^3.4.2",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
-    "styled-components": "^4.4.1",
+    "styled-components": "^5.2.0",
     "webpack-node-externals": "^1.7.2"
   },
   "devDependencies": {
@@ -39,6 +39,7 @@
     "concurrently": "^5.0.0",
     "http-proxy": "^1.18.0",
     "jest": "^26.6.0",
+    "react-is": "^16.13.1",
     "react-test-renderer": "^16.14.0"
   }
 }
