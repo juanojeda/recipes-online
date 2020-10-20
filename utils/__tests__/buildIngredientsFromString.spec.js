@@ -13,7 +13,7 @@ describe("buildIngredientsFromString", () => {
 
   describe("GIVEN a typed out ingredient string", () => {
     describe("WHEN the string starts with a numeric fragment", () => {
-      const testEach = test.concurrent.each`
+      const testEach = it.concurrent.each`
         ingredientString   | expectedAmount
         ${"1 carrot"}      | ${"1"}
         ${"750 carrot"}    | ${"750"}
@@ -34,7 +34,7 @@ describe("buildIngredientsFromString", () => {
     });
 
     describe("WHEN the ingredient does NOT start with a numeric fragment", () => {
-      const testEach = test.concurrent.each`
+      const testEach = it.concurrent.each`
         ingredientString           | expectedAmount
         ${"five carrots"}          | ${undefined}
         ${"a pound of olives"}     | ${undefined}
@@ -51,9 +51,8 @@ describe("buildIngredientsFromString", () => {
       );
     });
 
-    // units
     describe("WHEN the ingredient includes a supported unit", () => {
-      const testEach = test.concurrent.each`
+      const testEach = it.concurrent.each`
         ingredientString        | expectedUnit
         ${"1 cup carrots"}      | ${"cup"}
         ${"cups carrots"}       | ${"cups"}
@@ -80,7 +79,7 @@ describe("buildIngredientsFromString", () => {
     });
 
     describe("WHEN the ingredient does NOT include a supported unit", () => {
-      const testEach = test.concurrent.each`
+      const testEach = it.concurrent.each`
         ingredientString           | expectedUnit
         ${"a plethora of carrots"} | ${undefined}
         ${"300lb carrot"}          | ${undefined}
