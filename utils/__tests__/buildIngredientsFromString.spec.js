@@ -7,12 +7,12 @@ describe("buildIngredientsFromString", () => {
       expect(ingredientObject).toHaveProperty("amount");
       expect(ingredientObject).toHaveProperty("unit");
       expect(ingredientObject).toHaveProperty("item");
-      expect(ingredientObject).toHaveProperty("preparation");
+      expect(ingredientObject).toHaveProperty("preparations");
     });
   });
 
   describe("GIVEN an ingredient string", () => {
-    describe("WHEN the string starts with a numeric fragment", () => {
+    describe("WHEN the string starts with a parseable number", () => {
       const testEach = it.concurrent.each`
         ingredientString   | expectedAmount
         ${"1 carrot"}      | ${"1"}
@@ -21,6 +21,7 @@ describe("buildIngredientsFromString", () => {
         ${"1/2 carrot"}    | ${"1/2"}
         ${"1 - 2 carrots"} | ${"1 - 2"}
         ${"0.5 carrots"}   | ${"0.5"}
+        ${"a carrot"}      | ${"1"}
       `;
 
       testEach(
@@ -33,11 +34,10 @@ describe("buildIngredientsFromString", () => {
       );
     });
 
-    describe("WHEN the ingredient does NOT start with a numeric fragment", () => {
+    describe("WHEN the ingredient does NOT start with a parseable fragment", () => {
       const testEach = it.concurrent.each`
         ingredientString           | expectedAmount
         ${"five carrots"}          | ${undefined}
-        ${"a pound of olives"}     | ${undefined}
         ${"salt and pepper"}       | ${undefined}
         ${"salt and pepper 50/50"} | ${undefined}
       `;
@@ -98,11 +98,12 @@ describe("buildIngredientsFromString", () => {
 
     describe("WHEN there is an ingredient", () => {
       const testEach = it.concurrent.each`
-        ingredientString        | expectedItem
-        ${"1 carrot"}      | ${"carrot"}
-        ${"1 cup carrots"}       | ${"carrots"}
-        ${"salt and pepper"}       | ${"salt and pepper"}
-        ${"carrots, chopped"}       | ${"carrots"}
+        ingredientString                    | expectedItem
+        ${"1 carrot"}                       | ${"carrot"}
+        ${"carrots, chopped"}               | ${"carrots"}
+        ${"1 cup carrots"}                  | ${"carrots"}
+        ${"salt and pepper"}                | ${"salt and pepper"}
+        ${"1g of tea of carrots, strained"} | ${"tea of carrots"}
       `;
 
       testEach(
@@ -115,22 +116,20 @@ describe("buildIngredientsFromString", () => {
       );
     });
 
-    // preparation
-
     describe("WHEN there is an ingredient with a preparation", () => {
       const testEach = it.concurrent.each`
-        ingredientString                  | expectedPrep
-        ${"1 carrot, chopped"}            | ${"chopped"}
-        ${"1 cup carrots, diced"}         | ${"diced"}
-        ${"salt and pepper"}              | ${undefined}
-        ${"carrots, chopped and sliced"}  | ${"chopped and sliced"}
+        ingredientString                         | expectedPrep
+        ${"1 carrot, chopped"}                   | ${"chopped"}
+        ${"1 cup carrots, diced"}                | ${"diced"}
+        ${"salt and pepper"}                     | ${undefined}
+        ${"carrots, chopped and sliced"}         | ${"chopped and sliced"}
       `;
 
       testEach(
         "GIVEN an ingredient $ingredientString, returns preparation of $expectedPrep",
         async ({ ingredientString, expectedPrep }) => {
           expect(
-            buildIngredientsFromString(ingredientString).preparation
+            buildIngredientsFromString(ingredientString).preparations
           ).toEqual(expectedPrep);
         }
       );

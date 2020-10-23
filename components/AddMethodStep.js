@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 
-import { Input } from "./Input";
+import Input from "./Input";
 import Button from "./Button";
 
 const AddMethodStep = ({ setValueFn }) => {
@@ -29,7 +29,7 @@ const AddMethodStep = ({ setValueFn }) => {
 };
 
 AddMethodStep.propTypes = {
-  setValueFn: PropTypes.func
+  setValueFn: PropTypes.func,
 };
 
 export default AddMethodStep;

@@ -12,8 +12,8 @@ const Ingredient = ({
   return (
     <li>
       <div>
-        {amount}
-        {item && ` ${unit}`} {item}
+        {amount && amount}
+        {unit && ` ${unit}`} {item}
         {preparations && `, ${preparations}`}
       </div>
       <button onClick={removeIngredient(id)}>remove</button>
