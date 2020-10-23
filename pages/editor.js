@@ -1,12 +1,30 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 import { getAPIEndpoint } from "../utils/api";
 
 import RecipeDisplay from "../components/RecipeDisplay";
 import AddMethodStep from "../components/AddMethodStep";
 import AddIngredient from "../components/AddIngredient";
-import { Input } from "../components/Input";
+import Input from "../components/Input";
 import Button from "../components/Button";
+import styled from "styled-components";
+import BREAKPOINTS from "../utils/breakpoints";
+
+const Wrapper = styled.div`
+  padding-left: 1rem;
+  padding-right: 1rem;
+
+  ${BREAKPOINTS.MD} {
+    display: flex;
+    justify-content: space-between;
+  }
+`;
+
+const FlexWrapper = styled.div`
+  ${BREAKPOINTS.MD} {
+    flex: 0 0 calc(50% - 1rem);
+  }
+`;
 
 const filterItem = (itemId, itemList) =>
   itemList.filter(({ id }) => id !== itemId);
@@ -68,24 +86,28 @@ const Editor = (props) => {
     removeFilteredItem(id, setIngredients, ingredients);
 
   return (
-    <>
-      <h3>Name your recipe</h3>
-      <Input setter={setTitle} placeholder="Eg. Rabbit stew" value={title} />
-      <h3>Add an ingredient</h3>
-      <AddIngredient setValueFn={addIngredientFn} />
-      <h3>Add a step</h3>
-      <AddMethodStep setValueFn={addMethodStepFn} />
-      <RecipeDisplay
-        title={title}
-        ingredients={ingredients}
-        methods={methods}
-        removeMethod={removeMethod}
-        removeIngredient={removeIngredient}
-      />
-      <Button variant="primary" fn={sendRecipeToDB}>
-        Save
-      </Button>
-    </>
+    <Wrapper>
+      <FlexWrapper>
+        <h3>Name your recipe</h3>
+        <Input setter={setTitle} placeholder="Eg. Rabbit stew" value={title} />
+        <h3>Add an ingredient</h3>
+        <AddIngredient setValueFn={addIngredientFn} />
+        <h3>Add a step</h3>
+        <AddMethodStep setValueFn={addMethodStepFn} />
+        <Button variant="primary" fn={sendRecipeToDB}>
+          Save
+        </Button>
+      </FlexWrapper>
+      <FlexWrapper>
+        <RecipeDisplay
+          title={title}
+          ingredients={ingredients}
+          methods={methods}
+          removeMethod={removeMethod}
+          removeIngredient={removeIngredient}
+        />
+      </FlexWrapper>
+    </Wrapper>
   );
 };
 

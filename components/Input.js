@@ -24,23 +24,23 @@ const StyledInput = styled.input`
 `;
 
 const StyledTextArea = styled(StyledInput).attrs({
-  as: "textarea"
+  as: "textarea",
 })`
   line-height: 1.5;
   vertical-align: bottom;
 `;
 
-const InputEl = props => <StyledInput {...props} />;
-const TextArea = props => <StyledTextArea {...props} />;
+const InputEl = (props) => <StyledInput {...props} />;
+const TextArea = (props) => <StyledTextArea {...props} />;
 
-export const Input = ({ type = "text", value, setter, placeholder }) => {
+const Input = ({ type = "text", value, setter, placeholder }) => {
   const Component = type === "textarea" ? TextArea : InputEl;
   const inputType = type === "textarea" ? undefined : type;
 
   return (
     <Component
       type={inputType}
-      onChange={event => setter(event.target.value)}
+      onChange={(event) => setter(event.target.value)}
       placeholder={placeholder}
       value={value}
     />
@@ -50,5 +50,7 @@ export const Input = ({ type = "text", value, setter, placeholder }) => {
 Input.propTypes = {
   value: PropTypes.string,
   setter: PropTypes.func,
-  placeholder: PropTypes.string
+  placeholder: PropTypes.string,
 };
+
+export default Input;
