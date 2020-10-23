@@ -39,7 +39,8 @@ const extractItem = (lineItem) =>
     .map((lineItem) => lineItem.replace(extractAmount(lineItem), ""))
     .map((lineItem) => lineItem.replace(extractUnit(lineItem), ""))
     .map((lineItem) => lineItem.replace(extractPreparation(lineItem), ""))
-    .map((lineItem) => lineItem.replace(",", ""))[0];
+    .map((lineItem) => lineItem.replace(",", ""))[0]
+    .trim();
 
 const buildIngredientFromString = (string) => ({
   unit: extractUnit(string),

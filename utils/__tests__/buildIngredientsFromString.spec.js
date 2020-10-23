@@ -96,8 +96,44 @@ describe("buildIngredientsFromString", () => {
       );
     });
 
-    // item
+    describe("WHEN there is an ingredient", () => {
+      const testEach = it.concurrent.each`
+        ingredientString        | expectedItem
+        ${"1 carrot"}      | ${"carrot"}
+        ${"1 cup carrots"}       | ${"carrots"}
+        ${"salt and pepper"}       | ${"salt and pepper"}
+        ${"carrots, chopped"}       | ${"carrots"}
+      `;
+
+      testEach(
+        "GIVEN an ingredient $ingredientString, returns item of $expectedItem",
+        async ({ ingredientString, expectedItem }) => {
+          expect(buildIngredientsFromString(ingredientString).item).toEqual(
+            expectedItem
+          );
+        }
+      );
+    });
 
     // preparation
+
+    describe("WHEN there is an ingredient with a preparation", () => {
+      const testEach = it.concurrent.each`
+        ingredientString                  | expectedPrep
+        ${"1 carrot, chopped"}            | ${"chopped"}
+        ${"1 cup carrots, diced"}         | ${"diced"}
+        ${"salt and pepper"}              | ${undefined}
+        ${"carrots, chopped and sliced"}  | ${"chopped and sliced"}
+      `;
+
+      testEach(
+        "GIVEN an ingredient $ingredientString, returns preparation of $expectedPrep",
+        async ({ ingredientString, expectedPrep }) => {
+          expect(
+            buildIngredientsFromString(ingredientString).preparation
+          ).toEqual(expectedPrep);
+        }
+      );
+    });
   });
 });
