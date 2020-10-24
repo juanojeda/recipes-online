@@ -35,7 +35,11 @@ const RecipeList = ({ recipes }) => (
 );
 
 RecipeList.propTypes = {
-  recipes: PropTypes.arrayOf(PropTypes.shape({}))
+  recipes: PropTypes.arrayOf(PropTypes.shape({})),
+};
+
+RecipeList.defaultProps = {
+  recipes: [],
 };
 
 export default RecipeList;
