@@ -1,26 +1,24 @@
 import { default as firestore } from "./firebase";
 
-const convertToRealDate = secs => {
+const convertToRealDate = (secs) => {
   let date = new Date(0);
   date.setUTCSeconds(secs);
   return date.toISOString();
 };
 
 const buildListResponse = async () => {
-  const dbSnapshot = await firestore()
-    .collection("recipes")
-    .get();
+  const dbSnapshot = await firestore().collection("recipes").get();
 
   let docPromises = [];
 
-  dbSnapshot.forEach(doc => {
+  dbSnapshot.forEach((doc) => {
     const docPromise = new Promise(async (res, rej) => {
       try {
         const { slug, title } = doc.data();
         const response = {
           id: doc.id,
           slug,
-          title
+          title,
         };
 
         res(response);
@@ -37,7 +35,7 @@ const buildListResponse = async () => {
   return docs;
 };
 
-const buildDetailResponse = async slug => {
+const buildDetailResponse = async (slug) => {
   const dbSnapshot = await firestore()
     .collection("recipes")
     .where("slug", "==", slug)
@@ -45,14 +43,14 @@ const buildDetailResponse = async slug => {
 
   let docPromises = [];
 
-  dbSnapshot.forEach(doc => {
+  dbSnapshot.forEach((doc) => {
     const docPromise = new Promise(async (res, rej) => {
       try {
         const { title, slug, ...fields } = doc.data();
         const response = {
           id: doc.id,
           title,
-          fields
+          fields,
         };
 
         res(response);
@@ -80,7 +78,7 @@ const handler = async function handler(event, context) {
       } else {
         response = {
           error: true,
-          errorMessage: "No recipe found with that slug"
+          errorMessage: "No recipe found with that slug",
         };
       }
     } else {
@@ -89,7 +87,7 @@ const handler = async function handler(event, context) {
     return {
       statusCode: 200,
       body: JSON.stringify(response),
-      headers: { "Content-Type": "application/json" }
+      headers: { "Content-Type": "application/json" },
     };
   } catch (err) {
     console.log("Error getting documents", err);
