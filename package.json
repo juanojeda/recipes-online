@@ -38,7 +38,7 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "concurrently": "^5.0.0",
-    "http-proxy": "^1.18.0",
+    "http-proxy": "^1.18.1",
     "jest": "^26.6.0",
     "react-is": "^16.13.1",
     "react-test-renderer": "^16.14.0"
