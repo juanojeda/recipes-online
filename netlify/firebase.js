@@ -1,4 +1,3 @@
-import { google } from "googleapis";
 import admin from "firebase-admin";
 
 let env;
@@ -36,37 +35,5 @@ if (!admin.apps.length) {
   admin.firestore().settings({ timestampsInSnapshots: true });
 }
 firebaseDB = admin.firestore;
-
-export const getAuthToken = async () => {
-  const scopes = [
-    "https://www.googleapis.com/auth/firebase.database",
-    "https://www.googleapis.com/auth/datastore",
-  ];
-
-  const jwtClient = new google.auth.JWT(
-    firebaseKey.client_email,
-    null,
-    firebaseKey.private_key.replace(/\\n/g, "\n"),
-    scopes,
-    null
-  );
-
-  let authToken;
-  try {
-    const tokens = await jwtClient.authorize();
-
-    if (tokens.access_token === null) {
-      throw new Error(
-        "Provided service account does not have permission to generate access tokens"
-      );
-    }
-
-    authToken = tokens.access_token;
-  } catch (err) {
-    console.log("Error making request to generate access token:", err);
-  }
-
-  return authToken;
-};
 
 export default firebaseDB;
