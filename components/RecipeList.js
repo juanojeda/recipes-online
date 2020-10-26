@@ -27,7 +27,7 @@ const RecipeCard = styled.a`
 const RecipeList = ({ recipes }) => (
   <RecipeWrapper>
     {recipes.map(({ id, title, slug }) => (
-      <Link key={id} href="/recipe" as={`recipe/${slug}`}>
+      <Link key={id} href="/recipe/[recipeId]" as={`recipe/${slug}`}>
         <RecipeCard>{title}</RecipeCard>
       </Link>
     ))}

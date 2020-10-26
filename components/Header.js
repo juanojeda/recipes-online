@@ -1,11 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
+import Link from "next/link";
 
 import colours from "../utils/style-utils/colours";
 import { fontSets } from "../utils/style-utils/fonts";
 import Navigation from "./Navigation";
-import { Link } from "../routes";
 
 const HeaderBar = styled.header`
   align-items: center;
@@ -49,10 +49,10 @@ const Logo = styled.a`
   }
 `;
 
-const Header = props => (
+const Header = (props) => (
   <>
     <HeaderBar>
-      <Link route="/">
+      <Link href="/">
         <Logo>Recipes</Logo>
       </Link>
     </HeaderBar>

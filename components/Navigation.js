@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { Link } from "../routes";
+import Link from "next/link";
 
 import colours from "../utils/style-utils/colours";
 
@@ -33,12 +33,12 @@ const NavLink = styled.a`
   }
 `;
 
-const Navigation = props => (
+const Navigation = (props) => (
   <NavWrapper>
-    <Link route="/recipes">
+    <Link href="/recipes">
       <NavLink>Recipes</NavLink>
     </Link>
-    <Link route="/add-recipe">
+    <Link href="/add-recipe">
       <NavLink>Add a recipe</NavLink>
     </Link>
   </NavWrapper>

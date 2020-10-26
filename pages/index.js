@@ -1,15 +1,15 @@
 import React from "react";
-import { Link } from "../routes";
+import Link from "next/link";
 
 export default () => (
   <ul>
     <li>
-      <Link route="/recipes">
+      <Link href="/recipes">
         <a>Recipes</a>
       </Link>
     </li>
     <li>
-      <Link route="/add-recipe">
+      <Link href="/add-recipe">
         <a>Add a recipe</a>
       </Link>
     </li>
