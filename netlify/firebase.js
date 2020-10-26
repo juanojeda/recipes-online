@@ -22,26 +22,26 @@ const firebaseKey = {
   auth_uri: env.FIREBASE_AUTH_URI,
   token_uri: env.FIREBASE_TOKEN_URI,
   auth_provider_x509_cert_url: env.FIREBASE_AUTH_PROVIDER_X509_CERT_URL,
-  client_x509_cert_url: env.FIREBASE_CLIENT_X509_CERT_URL
+  client_x509_cert_url: env.FIREBASE_CLIENT_X509_CERT_URL,
 };
 
 let firebaseDB;
 
+console.log(admin.apps);
+
 if (!admin.apps.length) {
   admin.initializeApp({
-    credential: admin.credential.cert(firebaseKey)
+    credential: admin.credential.cert(firebaseKey),
   });
-
-  firebaseDB = admin.firestore;
-  firebaseDB().settings({ timestampsInSnapshots: true });
+  admin.firestore().settings({ timestampsInSnapshots: true });
 } else {
-  firebaseDB = admin.apps[0].firestore;
+  firebaseDB = admin.firestore;
 }
 
 export const getAuthToken = async () => {
   const scopes = [
     "https://www.googleapis.com/auth/firebase.database",
-    "https://www.googleapis.com/auth/datastore"
+    "https://www.googleapis.com/auth/datastore",
   ];
 
   const jwtClient = new google.auth.JWT(

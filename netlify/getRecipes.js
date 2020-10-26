@@ -91,7 +91,12 @@ const handler = async function handler(event, context) {
     };
   } catch (err) {
     console.log("Error getting documents", err);
-    return new Error(err);
+    const error = new Error(err);
+
+    return {
+      statusCode: error.statusCode,
+      message: error.message,
+    };
   }
 };
 
