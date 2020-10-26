@@ -34,9 +34,8 @@ if (!admin.apps.length) {
     credential: admin.credential.cert(firebaseKey),
   });
   admin.firestore().settings({ timestampsInSnapshots: true });
-} else {
-  firebaseDB = admin.firestore;
 }
+firebaseDB = admin.firestore;
 
 export const getAuthToken = async () => {
   const scopes = [
