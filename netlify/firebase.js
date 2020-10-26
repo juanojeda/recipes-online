@@ -26,8 +26,6 @@ const firebaseKey = {
 
 let firebaseDB;
 
-console.log(admin.apps);
-
 if (!admin.apps.length) {
   admin.initializeApp({
     credential: admin.credential.cert(firebaseKey),
