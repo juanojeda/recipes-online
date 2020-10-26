@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
-import { getAPIEndpoint } from "../utils/api";
+import { getAPIEndpoint } from "../../utils/api";
 
-const fetchRecipe = async slug => {
+const fetchRecipe = async (slug) => {
   const data = await fetch(`${getAPIEndpoint()}/getRecipes?slug=${slug}`);
   const { id, title, fields, error, errorMessage } = await data.json();
 
@@ -11,42 +12,22 @@ const fetchRecipe = async slug => {
     title,
     fields,
     error,
-    errorMessage
+    errorMessage,
   };
-};
-
-const getSlugFromWindow = window => {
-  let slug;
-  if (window.location.search) {
-    const searchParams = new URLSearchParams(window.location.search);
-    slug = searchParams.get("slug");
-  } else {
-    slug = window.location.pathname.split("/recipe/")[1];
-  }
-
-  return slug;
 };
 
 const Recipe = () => {
   const [recipe, setRecipe] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
-  const [slug, setSlug] = useState(null);
+  const router = useRouter();
+  const { recipeId } = router.query;
 
   useEffect(() => {
-    if (!window) {
-      return;
-    }
-
-    let windowSlug = getSlugFromWindow(window);
-    setSlug(windowSlug);
-  }, []);
-
-  useEffect(() => {
-    if (!slug) return;
+    if (!recipeId) return;
 
     async function fetchAndSetRecipe() {
       const { id, title, fields, error, errorMessage } = await fetchRecipe(
-        slug
+        recipeId
       );
       if (!error) {
         setRecipe({ id, title, fields });
@@ -56,7 +37,7 @@ const Recipe = () => {
     }
 
     fetchAndSetRecipe();
-  }, [slug]);
+  }, [recipeId]);
 
   if (recipe) {
     const { fields, title } = recipe;
