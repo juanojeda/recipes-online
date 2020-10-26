@@ -1,4 +1,4 @@
 export const apiUrl = {
-  dev: "/api/",
-  prod: "/.netlify/functions"
+  dev: "/.netlify/functions",
+  prod: "/.netlify/functions",
 };

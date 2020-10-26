@@ -2,12 +2,11 @@
   "name": "recipe-editor",
   "version": "1.0.0",
   "scripts": {
-    "dev": "concurrently \"yarn netlify:serve\" \"node server.js\"",
     "build": "next build",
+    "start": "next start",
+    "dev": "next build && next start",
     "build:prod": "NODE_ENV=production next build && next export",
-    "start": "NODE_ENV=production node server.js",
     "netlify:build": "netlify-lambda build --config ./netlify/config.js ./netlify",
-    "netlify:serve": "netlify-lambda serve --config ./netlify/config.js ./netlify",
     "test": "jest --watch",
     "test:ci": "jest --ci"
   },

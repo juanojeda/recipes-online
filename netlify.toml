@@ -1,8 +1,12 @@
 [build]
   functions = "./functions"
-  command = "sed -i s/API_KEY_PLACEHOLDER/$API_KEY/g netlify.toml && yarn netlify:build && yarn build:prod"
+  command = "sed -i s/API_KEY_PLACEHOLDER/$API_KEY/g netlify.toml && yarn build:prod"
 
 [[redirects]]
   from = "/recipe/*"
   to = "/recipe/?slug=:splat"
   status = 200
+
+[dev]
+  port = 8888
+  command = "yarn dev"
