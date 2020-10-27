@@ -1,0 +1,3 @@
+# Next-on-Netlify Redirects
+/recipe/:recipeId  /recipe/[recipeId].html  200
+/*  /:splat  200

@@ -1,12 +1,9 @@
 [build]
-  functions = "./functions"
-  command = "sed -i s/API_KEY_PLACEHOLDER/$API_KEY/g netlify.toml && yarn build:prod"
-
-[[redirects]]
-  from = "/recipe/*"
-  to = "/recipe/?slug=:splat"
-  status = 200
+  functions = "out_functions"
+  publish = "out_publish"
+  command = "sed -i s/API_KEY_PLACEHOLDER/$API_KEY/g netlify.toml && yarn build"
 
 [dev]
-  port = 8888
-  command = "yarn dev"
+  functions = "out_functions"
+  publish = "out_publish"
+  framework = "#static"

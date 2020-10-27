@@ -2,11 +2,14 @@
   "name": "recipe-editor",
   "version": "1.0.0",
   "scripts": {
-    "build": "next build",
+    "build:next": "next build",
+    "build:lambdas": "netlify-lambda build --config ./netlify/config.js ./netlify",
+    "prebuild:clean": "rm -rf public/_next && rm -rf ./out_publish && rm -rf ./out_functions",
+    "copyfunctions": "cp -a ./functions ./out_functions",
+    "build": "yarn prebuild:clean && yarn build:next && next-on-netlify && yarn build:lambdas",
+    "build:prod": "NODE_ENV=production yarn build",
     "start": "next start",
-    "dev": "next build && next start",
-    "build:prod": "NODE_ENV=production yarn netlify:build && next build && next export",
-    "netlify:build": "netlify-lambda build --config ./netlify/config.js ./netlify",
+    "dev": "yarn build && netlify dev",
     "test": "jest --watch",
     "test:ci": "jest --ci"
   },
