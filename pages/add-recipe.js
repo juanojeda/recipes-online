@@ -62,7 +62,6 @@ const Editor = (props) => {
   const sendRecipeToDB = async () => {
     const body = { recipe: { title, ingredients, methods } };
 
-    console.log(body);
     try {
       const data = await fetch(`${getAPIEndpoint()}/addRecipe`, {
         method: "POST",
@@ -70,12 +69,9 @@ const Editor = (props) => {
         credentials: "include",
         body: JSON.stringify(body),
       });
-      const { title, ingredients, methods } = await data.json();
 
+      await data.json();
       clearRecipe();
-
-      console.log("successfully added");
-      console.log({ title, ingredients, methods });
     } catch (e) {
       console.error(e);
     }

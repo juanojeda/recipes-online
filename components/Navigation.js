@@ -38,7 +38,7 @@ const Navigation = (props) => (
     <Link href="/recipes">
       <NavLink>Recipes</NavLink>
     </Link>
-    <Link href="/editor" as="add-recipe">
+    <Link href="/add-recipe">
       <NavLink>Add a recipe</NavLink>
     </Link>
   </NavWrapper>
