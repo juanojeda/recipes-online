@@ -1,4 +1,3 @@
-import fetch from "isomorphic-unfetch";
 import { default as firestore } from "./firebase";
 import get from "lodash/get";
 

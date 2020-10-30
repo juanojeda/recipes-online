@@ -17,7 +17,7 @@ An online repository for storing and riffing on recipes
 - [ ] recipe can be added as an ingredient, linked from ingredient list
 - [ ] ingredient varieties
 - [ ] ingredient segments
-- [ ] improve ingredient entry - capture all in one field, but use spaces to separate bits?
+- [x] improve ingredient entry - capture all in one field, but use spaces to separate bits?
 
 #### Methods and units
 - [ ] store units in a separate table, autosuggest
