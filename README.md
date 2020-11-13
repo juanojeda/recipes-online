@@ -1,5 +1,7 @@
 # Recipes editor/viewer
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/60689355-a73d-4144-965d-835ec2335192/deploy-status)](https://app.netlify.com/sites/brave-aryabhata-f41f87/deploys)
+
 An online repository for storing and riffing on recipes
 
 [view it online](https://brave-aryabhata-f41f87.netlify.com/)
