@@ -1,15 +1,9 @@
-import { getAPIEndpoint } from "../utils/api";
-import { API_URL } from "../utils/constants";
+import fetchWithDefaults from "../utils/api-utils/fetchWithDefaults";
 
 const createRecipe = ({ title, ingredients, methods }) => {
   const body = { recipe: { title, ingredients, methods } };
 
-  return fetch(`${API_URL}/addRecipe`, {
-    method: "POST",
-    mode: "cors",
-    credentials: "include",
-    body: JSON.stringify(body),
-  });
+  return fetchWithDefaults("addRecipe", body);
 };
 
 export default createRecipe;

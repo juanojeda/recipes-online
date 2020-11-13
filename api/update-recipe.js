@@ -1,14 +1,10 @@
+import fetchWithDefaults from "../utils/api-utils/fetchWithDefaults";
 import { API_URL } from "../utils/constants";
 
 const updateRecipe = ({ title, ingredients, methods, id }) => {
   const body = { recipe: { title, ingredients, methods, id } };
 
-  return fetch(`${API_URL}/updateRecipe`, {
-    method: "POST",
-    mode: "cors",
-    credentials: "include",
-    body: JSON.stringify(body),
-  });
+  return fetchWithDefaults("updateRecipe", body);
 };
 
 export default updateRecipe;
