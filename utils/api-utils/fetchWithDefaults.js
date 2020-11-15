@@ -1,4 +1,4 @@
-import { API_URL } from "../utils/constants";
+import { API_URL } from "../constants";
 
 const fetchWithDefaults = (endpoint, body) =>
   fetch(`${API_URL}/${endpoint}`, {
