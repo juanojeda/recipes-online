@@ -38,10 +38,10 @@ const GlobalStyles = createGlobalStyle`
 
 `;
 
-const Layout = ({ children }, ...props) => (
+const Layout = ({ children, ...props }) => (
   <ThemeProvider
     theme={{
-      breakpoints: gridBreakpoints
+      breakpoints: gridBreakpoints,
     }}
     {...props}
   >
@@ -54,7 +54,7 @@ const Layout = ({ children }, ...props) => (
 );
 
 Layout.propTypes = {
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
 };
 
 export default Layout;

@@ -3,7 +3,7 @@ import admin from "firebase-admin";
 let env;
 
 if (!process.env.NODE_ENV !== "production") {
-  env = require("../utils/getEnv").default;
+  env = require("../utils/  ").default;
 } else {
   env = process.env;
 }
